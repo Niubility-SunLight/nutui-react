@@ -1,7 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Form, Input, Radio, Picker, Cell } from '@nutui/nutui-react-taro'
-import { ArrowRight } from '@nutui/icons-react'
+import { Cell, Form, Input, Picker, Radio } from '@nutui/nutui-react-taro'
+import { ArrowRight } from '@nutui/icons-react-taro'
 
 const Demo8 = () => {
   const pickerOptions = [
