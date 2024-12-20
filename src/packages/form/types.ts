@@ -8,6 +8,7 @@ export interface FormItemRuleWithoutValidator {
 
 type StoreValue = any
 export type NamePath = string | number
+export type InternalNamePath = (string | number)[]
 
 export interface Callbacks<Values = any> {
   onValuesChange?: (values: Values) => void
@@ -30,6 +31,15 @@ export interface FormInstance<Values = any> {
   validateFields: (nameList?: NamePath[]) => Promise<any[]>
 }
 
+export type InternalFormInstance = FormInstance & { _init: boolean }
+
+export type WatchCallBack = (
+  allValues: Store,
+  namePathList: InternalNamePath[]
+) => void
+export interface WatchOptions<Form extends FormInstance = FormInstance> {
+  form?: Form
+}
 export interface FormFieldEntity {
   onStoreChange: (type?: string) => void
   getNamePath: () => NamePath

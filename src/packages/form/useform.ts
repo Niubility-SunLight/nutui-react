@@ -5,8 +5,10 @@ import {
   Callbacks,
   FormFieldEntity,
   FormInstance,
+  InternalNamePath,
   NamePath,
   Store,
+  WatchCallBack,
 } from './types'
 
 export const SECRET = 'NUT_FORM_INTERNAL'
@@ -64,8 +66,8 @@ class FormStore {
   /**
    * 获取全部字段
    */
-  getFieldsValue = (nameList: NamePath[] | true): { [key: NamePath]: any } => {
-    if (typeof nameList === 'boolean') {
+  getFieldsValue = (nameList?: NamePath[] | true): { [key: NamePath]: any } => {
+    if (typeof nameList === 'boolean' || nameList === undefined) {
       return JSON.parse(JSON.stringify(this.store))
     }
     const fieldsValue: { [key: NamePath]: any } = {}
@@ -77,6 +79,7 @@ class FormStore {
 
   updateStore(nextStore: Store) {
     this.store = nextStore
+    this.notifyWatch()
   }
 
   /**
@@ -220,6 +223,28 @@ class FormStore {
     }
   }
 
+  //
+  private watchList: WatchCallBack[] = []
+
+  private registerWatch = (callback: any) => {
+    this.watchList.push(callback)
+
+    return () => {
+      this.watchList = this.watchList.filter((fn) => fn !== callback)
+    }
+  }
+
+  private notifyWatch = (namePath: InternalNamePath[] = []) => {
+    // No need to cost perf when nothing need to watch
+    if (this.watchList.length) {
+      const allValues = this.getFieldsValue(true)
+
+      this.watchList.forEach((callback) => {
+        callback(allValues, namePath)
+      })
+    }
+  }
+
   dispatch = ({ name }: { name: string }) => {
     this.validateFields([name])
   }
@@ -234,6 +259,7 @@ class FormStore {
         store: this.store,
         fieldEntities: this.fieldEntities,
         registerUpdate: this.registerUpdate,
+        registerWatch: this.registerWatch,
       }
     }
   }
@@ -249,6 +275,7 @@ class FormStore {
       submit: this.submit,
       errors: this.errors,
       getInternal: this.getInternal,
+      _init: true,
     }
   }
 }

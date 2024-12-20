@@ -9,6 +9,7 @@ import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
 
 const FormDemo = () => {
   const [translated] = useTranslate({
@@ -19,6 +20,7 @@ const FormDemo = () => {
       relatedDisplay: '关联展示',
       title4: 'Form.useForm 对表单数据域进行交互。',
       title5: '表单类型',
+      title6: 'Form.useWatch 对表单数据监听',
       validateTrigger: '校验触发时机',
     },
     'en-US': {
@@ -28,6 +30,7 @@ const FormDemo = () => {
       relatedDisplay: 'Related Display',
       title4: 'Interact with form data fields via Form.useForm',
       title5: 'Form Type',
+      title6: 'Watch field data change with Form.useWatch',
       validateTrigger: 'Validate Trigger',
     },
   })
@@ -50,6 +53,8 @@ const FormDemo = () => {
         <Demo6 />
         <h2>{translated.title5}</h2>
         <Demo7 />
+        <h2>{translated.title6}</h2>
+        <Demo8 />
       </div>
     </>
   )

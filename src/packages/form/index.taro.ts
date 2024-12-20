@@ -3,6 +3,7 @@ import { Form, FormProps } from './form.taro'
 import { FormItem } from '../formitem/formitem.taro'
 import { FormInstance } from './types'
 import { useForm } from '@/packages/form/useform.taro'
+import useWatch from './useWatch.taro'
 
 export type {
   FormItemRuleWithoutValidator,
@@ -17,11 +18,13 @@ type CompoundedComponent = React.ForwardRefExoticComponent<
 > & {
   Item: typeof FormItem
   useForm: typeof useForm
+  useWatch: typeof useWatch
 }
 
 const InnerForm = Form as CompoundedComponent
 
 InnerForm.Item = FormItem
 InnerForm.useForm = useForm
+InnerForm.useWatch = useWatch
 
 export default InnerForm

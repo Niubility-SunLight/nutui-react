@@ -120,8 +120,6 @@ import { Form } from '@nutui/nutui-react'
 
 ### FormInstance
 
-Form.useForm()创建 Form 实例，用于管理所有数据状态。
-
 | 属性 | 说明 | 类型 |
 | --- | --- | --- |
 | getFieldValue | 获取对应字段名的值 | `(name: NamePath) => any` |
@@ -130,6 +128,12 @@ Form.useForm()创建 Form 实例，用于管理所有数据状态。
 | setFieldValue | 设置对应字段名的值 | `<T>(name: NamePath, value: T) => void` |
 | resetFields | 重置表单提示状态 | `() => void` |
 | submit | 提交表单进行校验的方法 | `Promise` |
+
+### Hook
+
+Form.useForm() 创建 Form 实例，用于管理所有数据状态。
+
+Form.useWatch() 用于直接获取 form 中字段对应的值。
 
 ## 主题定制
 
