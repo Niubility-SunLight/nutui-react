@@ -66,6 +66,14 @@ import { Form } from '@nutui/nutui-react'
 
 :::
 
+### Form.useWatch 对表单数据监听
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
 ## Form
 
 ### Props
@@ -131,9 +139,10 @@ import { Form } from '@nutui/nutui-react'
 
 ### Hook
 
-Form.useForm() 创建 Form 实例，用于管理所有数据状态。
-
-Form.useWatch() 用于直接获取 form 中字段对应的值。
+| 方法名 | 说明 | 类型 |
+| --- | --- | --- |
+| Form.useForm | 创建 Form 实例，用于管理所有数据状态。 | `() =>  FormInstance` |
+| Form.useWatch | 用于直接获取 form 中字段对应的值。 | `(name: NamePath \| (values: T) => any,options: FormInstance \| WatchOptions<FormInstance>) => any` |
 
 ## 主题定制
 
