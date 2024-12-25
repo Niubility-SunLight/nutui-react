@@ -1,3 +1,12 @@
+# v2.7.4
+
+`2024-12-20`
+
+- :bug: fix(form): 修复label字号的css变量 (#2872)
+- :bug: fix: 修改小程序下自动吸边计算逻辑&&解决部分小程序写法不支持问题 (#2855)
+- :bug: fix(countup): 分隔符文字颜色支持css变量修改 (#2869)
+- :bug: fix: update variables-jmapp.scss
+
 # v2.7.3
 
 `2024-12-13`

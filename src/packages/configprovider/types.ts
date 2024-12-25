@@ -762,6 +762,7 @@ export type NutCSSVariables =
   | 'nutuiCountupLrMargin'
   | 'nutuiCountupBgColor'
   | 'nutuiCountupColor'
+  | 'nutuiCountupSeparatorColor'
   | 'nutuiRowContentColor'
   | 'nutuiRowContentBackgroundColor'
   | 'nutuiRowContentBorderRadius'
